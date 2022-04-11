@@ -6,7 +6,7 @@ public class RegexParser {
     public RegexParser(){}
 
     public static String splitItems(String PARSE_ME){
-        String REGEX = "[;|*|%|^|#]";
+        String REGEX = "[;|*|%|^|#|@|!]";
         String REPLACE = "\n";
         Pattern pattern = Pattern.compile(REGEX);
         Matcher matcher = pattern.matcher(PARSE_ME);
