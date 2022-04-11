@@ -15,4 +15,14 @@ public class RegexParser {
 
         return PARSE_ME;
     }
+
+    public static String removeColonsFromSplitString(String PARSE_ME){
+        String REGEX = "(?=\\W):";
+        String REPLACE = "\t";
+        Pattern p = Pattern.compile(REGEX);
+        Matcher m = p.matcher(PARSE_ME);
+        PARSE_ME = m.replaceAll(REPLACE);
+
+        return PARSE_ME;
+    }
 }
