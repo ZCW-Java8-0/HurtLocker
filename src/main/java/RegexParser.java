@@ -43,4 +43,14 @@ public class RegexParser {
 
         return PARSE_ME;
     }
+
+    public static String standardizeTypeKey(String PARSE_ME) {
+        String REGEX = "(t|T)y..(?=\\W):";
+        String REPLACE = "Type:";
+        Pattern p = Pattern.compile(REGEX);
+        Matcher m = p.matcher(PARSE_ME);
+        PARSE_ME = m.replaceAll(REPLACE);
+
+        return PARSE_ME;
+    }
 }

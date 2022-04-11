@@ -96,10 +96,63 @@ class RegexParserTest {
                 "\n";
 
         assertEquals(actual,expected);
-
     }
 
     @Test
     void standardizePriceKey() {
+        String PARSE_ME = RegexParser.splitItems(testString);
+        PARSE_ME = RegexParser.standardizeNameKey(PARSE_ME);
+        String actual = RegexParser.standardizePriceKey(PARSE_ME);
+        String expected = "Name:Milk\n" +
+                "Price:3.23\n" +
+                "type:Food\n" +
+                "expiration:1/25/2016\n" +
+                "\n" +
+                "Name:BreaD\n" +
+                "Price:1.23\n" +
+                "type:Food\n" +
+                "expiration:1/02/2016\n" +
+                "\n" +
+                "Name:BrEAD\n" +
+                "Price:1.23\n" +
+                "type:Food\n" +
+                "expiration:2/25/2016\n" +
+                "\n" +
+                "Name:MiLK\n" +
+                "Price:3.23\n" +
+                "type:Food\n" +
+                "expiration:1/11/2016\n" +
+                "\n";
+
+        assertEquals(actual,expected);
+    }
+    @Test
+    void standardizeTypeKey() {
+        String PARSE_ME = RegexParser.splitItems(testString);
+        PARSE_ME = RegexParser.standardizeNameKey(PARSE_ME);
+        PARSE_ME = RegexParser.standardizePriceKey(PARSE_ME);
+        String actual = RegexParser.standardizeTypeKey(PARSE_ME);
+        String expected = "Name:Milk\n" +
+                "Price:3.23\n" +
+                "Type:Food\n" +
+                "expiration:1/25/2016\n" +
+                "\n" +
+                "Name:BreaD\n" +
+                "Price:1.23\n" +
+                "Type:Food\n" +
+                "expiration:1/02/2016\n" +
+                "\n" +
+                "Name:BrEAD\n" +
+                "Price:1.23\n" +
+                "Type:Food\n" +
+                "expiration:2/25/2016\n" +
+                "\n" +
+                "Name:MiLK\n" +
+                "Price:3.23\n" +
+                "Type:Food\n" +
+                "expiration:1/11/2016\n" +
+                "\n";
+
+        assertEquals(actual,expected);
     }
 }
