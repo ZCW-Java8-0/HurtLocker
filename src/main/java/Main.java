@@ -11,6 +11,11 @@ public class Main {
 
     public static void main(String[] args) throws Exception{
         String output = (new Main()).readRawDataToString();
+        output = RegexParser.splitItems(output);
+        output = RegexParser.standardizeNameKey(output);
+        output = RegexParser.standardizePriceKey(output);
+        output = RegexParser.standardizeTypeKey(output);
+        output = RegexParser.standardizeExpirationKey(output);
         System.out.println(output);
 
     }

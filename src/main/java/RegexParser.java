@@ -9,7 +9,6 @@ public class RegexParser {
         String REGEX = "[;|*|%|^|#]";
         String REPLACE = "\n";
         Pattern pattern = Pattern.compile(REGEX);
-
         Matcher matcher = pattern.matcher(PARSE_ME);
         PARSE_ME = matcher.replaceAll(REPLACE);
 
@@ -48,7 +47,16 @@ public class RegexParser {
         String REGEX = "(?i)(t)y..(?=\\W):";
         String REPLACE = "Type:";
         Pattern pattern = Pattern.compile(REGEX);
-        ;
+        Matcher matcher = pattern.matcher(PARSE_ME);
+        PARSE_ME = matcher.replaceAll(REPLACE);
+
+        return PARSE_ME;
+    }
+
+    public static String standardizeExpirationKey(String PARSE_ME) {
+        String REGEX = "(?i)e.........(?=\\W):";
+        String REPLACE = "Expiration:";
+        Pattern pattern = Pattern.compile(REGEX);
         Matcher matcher = pattern.matcher(PARSE_ME);
         PARSE_ME = matcher.replaceAll(REPLACE);
 
