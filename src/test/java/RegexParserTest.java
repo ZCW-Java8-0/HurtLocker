@@ -9,34 +9,31 @@ class RegexParserTest {
 
     @Test
     void splitItems() {
-        String regex = "[;|*|%|^|#]";
+        String regex = "[;|*|%|^|#{2}]";
         String testString = "naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##" +
                 "naME:BreaD;price:1.23;type:Food;expiration:1/02/2016##" +
                 "NAMe:BrEAD;price:1.23;type:Food;expiration:2/25/2016##" +
-                "naMe:MiLK;price:3.23;type:Food^expiration:1/11/2016##" +
-                "naMe:Cookies;price:2.25;type:Food%expiration:1/25/2016##";
+                "naMe:MiLK;price:3.23;type:Food^expiration:1/11/2016##";
         String expected = "naMe:Milk\n" +
                 "price:3.23\n" +
                 "type:Food\n" +
                 "expiration:1/25/2016\n" +
-                "\n" +
                 "\n" +
                 "naME:BreaD\n" +
                 "price:1.23\n" +
                 "type:Food\n" +
                 "expiration:1/02/2016\n" +
                 "\n" +
-                "\n" +
                 "NAMe:BrEAD\n" +
                 "price:1.23\n" +
                 "type:Food\n" +
                 "expiration:2/25/2016\n" +
                 "\n" +
-                "\n" +
                 "naMe:MiLK\n" +
                 "price:3.23\n" +
                 "type:Food\n" +
-                "expiration:1/11/2016";
+                "expiration:1/11/2016\n" +
+                "\n";
         String actual = RegexParser.splitItems(testString);
 
         assertEquals(actual, expected);
