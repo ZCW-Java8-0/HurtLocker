@@ -8,10 +8,10 @@ public class RegexParser {
     public static String splitItems(String PARSE_ME){
         String REGEX = "[;|*|%|^|#]";
         String REPLACE = "\n";
-        Pattern p = Pattern.compile(REGEX);
+        Pattern pattern = Pattern.compile(REGEX);
 
-        Matcher m = p.matcher(PARSE_ME);
-        PARSE_ME = m.replaceAll(REPLACE);
+        Matcher matcher = pattern.matcher(PARSE_ME);
+        PARSE_ME = matcher.replaceAll(REPLACE);
 
         return PARSE_ME;
     }
@@ -19,37 +19,38 @@ public class RegexParser {
     public static String removeColonsFromSplitString(String PARSE_ME){
         String REGEX = "(?=\\W):";
         String REPLACE = "\t";
-        Pattern p = Pattern.compile(REGEX);
-        Matcher m = p.matcher(PARSE_ME);
-        PARSE_ME = m.replaceAll(REPLACE);
+        Pattern pattern = Pattern.compile(REGEX);
+        Matcher matcher = pattern.matcher(PARSE_ME);
+        PARSE_ME = matcher.replaceAll(REPLACE);
 
         return PARSE_ME;
     }
     public static String standardizeNameKey(String PARSE_ME) {
-        String REGEX = "(n|N)...(?=\\W):";
+        String REGEX = "(?i)(n)...(?=\\W):";
         String REPLACE = "Name:";
-        Pattern p = Pattern.compile(REGEX);
-        Matcher m = p.matcher(PARSE_ME);
-        PARSE_ME = m.replaceAll(REPLACE);
+        Pattern pattern = Pattern.compile(REGEX);
+        Matcher matcher = pattern.matcher(PARSE_ME);
+        PARSE_ME = matcher.replaceAll(REPLACE);
 
         return PARSE_ME;
     }
     public static String standardizePriceKey(String PARSE_ME) {
-        String REGEX = "(p|P)....(?=\\W):";
+        String REGEX = "(?i)(p)....(?=\\W):";
         String REPLACE = "Price:";
-        Pattern p = Pattern.compile(REGEX);
-        Matcher m = p.matcher(PARSE_ME);
-        PARSE_ME = m.replaceAll(REPLACE);
+        Pattern pattern = Pattern.compile(REGEX);
+        Matcher matcher = pattern.matcher(PARSE_ME);
+        PARSE_ME = matcher.replaceAll(REPLACE);
 
         return PARSE_ME;
     }
 
     public static String standardizeTypeKey(String PARSE_ME) {
-        String REGEX = "(t|T)y..(?=\\W):";
+        String REGEX = "(?i)(t)y..(?=\\W):";
         String REPLACE = "Type:";
-        Pattern p = Pattern.compile(REGEX);
-        Matcher m = p.matcher(PARSE_ME);
-        PARSE_ME = m.replaceAll(REPLACE);
+        Pattern pattern = Pattern.compile(REGEX);
+        ;
+        Matcher matcher = pattern.matcher(PARSE_ME);
+        PARSE_ME = matcher.replaceAll(REPLACE);
 
         return PARSE_ME;
     }
