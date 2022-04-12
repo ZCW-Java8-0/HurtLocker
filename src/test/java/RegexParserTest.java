@@ -185,4 +185,37 @@ class RegexParserTest {
 
         assertEquals(actual,expected);
     }
+
+    @Test
+    void standardizeBreadValue() {
+        String PARSE_ME = RegexParser.splitItems(testString);
+        PARSE_ME = RegexParser.standardizeNameKey(PARSE_ME);
+        PARSE_ME = RegexParser.standardizePriceKey(PARSE_ME);
+        PARSE_ME = RegexParser.standardizeTypeKey(PARSE_ME);
+        PARSE_ME = RegexParser.standardizeExpirationKey(PARSE_ME);
+        String actual = RegexParser.standardizeBreadValue(PARSE_ME);
+
+        String expected = "Name:Milk\n" +
+                "Price:3.23\n" +
+                "Type:Food\n" +
+                "Expiration:1/25/2016\n" +
+                "\n" +
+                "Name:Bread\n" +
+                "Price:1.23\n" +
+                "Type:Food\n" +
+                "Expiration:1/02/2016\n" +
+                "\n" +
+                "Name:Bread\n" +
+                "Price:1.23\n" +
+                "Type:Food\n" +
+                "Expiration:2/25/2016\n" +
+                "\n" +
+                "Name:MiLK\n" +
+                "Price:3.23\n" +
+                "Type:Food\n" +
+                "Expiration:1/11/2016\n" +
+                "\n";
+
+        assertEquals(actual,expected);
+    }
 }
